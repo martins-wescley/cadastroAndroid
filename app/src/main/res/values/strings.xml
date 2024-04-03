@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">AVA2</string>
+    <string name="nome_do_funcionario">Nome do Funcionário</string>
+    <string name="email_do_funcionario">Email do Funcionário</string>
+    <string name="cargo_do_funcionario">Cargo do Funcionário</string>
+    <string name="idade_do_funcionario">Idade do Funcionário</string>
+    <string name="salario_do_funcionario">Salário do Funcionário</string>
+    <string name="adicionar_funcionario">Adicionar Funcionário</string>
+    <string name="atualizar_funcionario">Atualizar Funcionário</string>
+</resources>
