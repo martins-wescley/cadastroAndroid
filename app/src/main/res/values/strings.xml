@@ -7,4 +7,5 @@
     <string name="salario_do_funcionario">Salário do Funcionário</string>
     <string name="adicionar_funcionario">Adicionar Funcionário</string>
     <string name="atualizar_funcionario">Atualizar Funcionário</string>
+    <string name="deletar_funcionario">Deletar Funcionário</string>
 </resources>

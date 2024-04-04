@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.ava2.model.Funcionario;
+import com.example.ava2.persistence.FuncionarioDAO;
 import com.example.ava2.persistence.MyDatabaseHelper;
 
 public class AddFuncionario extends AppCompatActivity {
@@ -27,15 +29,21 @@ public class AddFuncionario extends AppCompatActivity {
         salario_input = findViewById(R.id.salario_input);
         add_button = findViewById(R.id.add_button);
 
+        Funcionario func = new Funcionario();
+
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyDatabaseHelper myDatabaseHelper = new MyDatabaseHelper(AddFuncionario.this);
-                myDatabaseHelper.addFuncionario(nome_input.getText().toString().trim(),
-                        email_input.getText().toString().trim(),
-                        Integer.valueOf(idade_input.getText().toString().trim()),
-                        cargo_input.getText().toString().trim(),
-                        Double.valueOf(salario_input.getText().toString().trim()));
+                func.setNome(nome_input.getText().toString().trim());
+                func.setEmail(email_input.getText().toString().trim());
+                func.setIdade(Integer.valueOf(idade_input.getText().toString().trim()));
+                func.setCargo(cargo_input.getText().toString().trim());
+                func.setSalario(Double.valueOf(salario_input.getText().toString().trim()));
+
+                FuncionarioDAO dao = new FuncionarioDAO(AddFuncionario.this);
+
+                dao.addFuncionario(func);
+
             }
         });
 

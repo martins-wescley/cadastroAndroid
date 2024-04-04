@@ -1,16 +1,18 @@
 package com.example.ava2.util;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ava2.MainActivity;
 import com.example.ava2.R;
+import com.example.ava2.UpdateFuncionario;
 
 import java.util.ArrayList;
 
@@ -42,6 +44,15 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         holder.func_cargo.setText(String.valueOf(func_cargo.get(position)));
         holder.func_idade.setText(String.valueOf(func_idade.get(position)));
 
+        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, UpdateFuncionario.class);
+                intent.putExtra("id", String.valueOf(func_id.get(position)));
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -49,9 +60,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         return func_id.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView func_id, func_nome, func_cargo, func_idade;
+        ConstraintLayout mainLayout;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -59,6 +71,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             func_nome = itemView.findViewById(R.id.func_nome_txt);
             func_cargo = itemView.findViewById(R.id.func_cargo_txt);
             func_idade = itemView.findViewById(R.id.func_idade_txt);
+            mainLayout = itemView.findViewById(R.id.meuLayout);
         }
     }
 }

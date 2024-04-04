@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.ava2.persistence.FuncionarioDAO;
 import com.example.ava2.persistence.MyDatabaseHelper;
 import com.example.ava2.util.CustomAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     FloatingActionButton add_button;
     MyDatabaseHelper myDB;
+    FuncionarioDAO dao;
     ArrayList<String> func_id, func_nome, func_cargo, func_idade;
 
     CustomAdapter customAdapter;
@@ -41,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        myDB = new MyDatabaseHelper(MainActivity.this);
+        dao = new FuncionarioDAO(MainActivity.this);
         func_id = new ArrayList<>();
         func_nome = new ArrayList<>();
         func_cargo = new ArrayList<>();
@@ -55,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void storeDataInArrays(){
-        Cursor cursor = myDB.readAllData();
+        Cursor cursor = dao.readAllData();
         if (cursor.getCount() == 0) {
             Toast.makeText(this, "Sem Registro na Base da Dados", Toast.LENGTH_SHORT).show();
         } else {
